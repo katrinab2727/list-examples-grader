@@ -10,6 +10,19 @@ class IsMoon implements StringChecker {
 }
 
 public class TestListExamples {
+
+  @Test
+  public void testFilter() {
+    List<String> list = Arrays.asList("apple", "banana", "orange", "moon", "sun");
+
+    StringChecker moonChecker = new IsMoon();
+
+    List<String> filteredList = ListExamples.filter(list, moonChecker);
+    
+    assertEquals(1, filteredList.size());
+    assertEquals(true, filteredList.contains("moon"));
+  }
+  
   @Test(timeout = 500)
   public void testMergeRightEnd() {
     List<String> left = Arrays.asList("a", "b", "c");
